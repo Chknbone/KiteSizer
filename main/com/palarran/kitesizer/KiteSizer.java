@@ -23,174 +23,213 @@ public class KiteSizer {
     
     //getters and setters
     public int getTheKiteSize() {
-        int[][] kiteTableNumbers = new int[12][12]; //Setting the 2 diminsional Array size
+        
+        int[] topRow = new int[12];
 
-        kiteTableNumbers[0][0] = 3;
-        kiteTableNumbers[0][1] = 3;
-        kiteTableNumbers[0][2] = 4;
-        kiteTableNumbers[0][3] = 4;
-        kiteTableNumbers[0][4] = 5;
-        kiteTableNumbers[0][5] = 5;
-        kiteTableNumbers[0][6] = 5;
-        kiteTableNumbers[0][7] = 6;
-        kiteTableNumbers[0][8] = 6;
-        kiteTableNumbers[0][9] = 7;
-        kiteTableNumbers[0][10] = 7;
-        kiteTableNumbers[0][11] = 8;
+        topRow[0] = 95;
+        topRow[1] = 110;
+        topRow[2] = 125;
+        topRow[3] = 140;
+        topRow[4] = 155;
+        topRow[5] = 170;
+        topRow[6] = 185;
+        topRow[7] = 200;
+        topRow[8] = 215;
+        topRow[9] = 230;
+        topRow[10] = 245;
+        topRow[11] = 260;
 
-        kiteTableNumbers[1][0] = 3;
-        kiteTableNumbers[1][1] = 4;
-        kiteTableNumbers[1][2] = 4;
-        kiteTableNumbers[1][3] = 5;
-        kiteTableNumbers[1][4] = 5;
-        kiteTableNumbers[1][5] = 6;
-        kiteTableNumbers[1][6] = 7;
-        kiteTableNumbers[1][7] = 7;
-        kiteTableNumbers[1][8] = 8;
-        kiteTableNumbers[1][9] = 8;
-        kiteTableNumbers[1][10] = 9;
-        kiteTableNumbers[1][11] = 9;
+        int[][] kiteSizes = new int[13][13];
 
-        kiteTableNumbers[2][0] = 4;
-        kiteTableNumbers[2][1] = 5;
-        kiteTableNumbers[2][2] = 5;
-        kiteTableNumbers[2][3] = 6;
-        kiteTableNumbers[2][4] = 6;
-        kiteTableNumbers[2][5] = 7;
-        kiteTableNumbers[2][6] = 8;
-        kiteTableNumbers[2][7] = 8;
-        kiteTableNumbers[2][8] = 9;
-        kiteTableNumbers[2][9] = 9;
-        kiteTableNumbers[2][10] = 10;
-        kiteTableNumbers[2][11] = 11;
+        kiteSizes[0][0] = 3;
+        kiteSizes[0][1] = 3;
+        kiteSizes[0][2] = 4;
+        kiteSizes[0][3] = 4;
+        kiteSizes[0][4] = 5;
+        kiteSizes[0][5] = 5;
+        kiteSizes[0][6] = 5;
+        kiteSizes[0][7] = 6;
+        kiteSizes[0][8] = 6;
+        kiteSizes[0][9] = 7;
+        kiteSizes[0][10] = 7;
+        kiteSizes[0][11] = 8;
+        kiteSizes[0][12] = 34;
 
-        kiteTableNumbers[3][0] = 4;
-        kiteTableNumbers[3][1] = 5;
-        kiteTableNumbers[3][2] = 6;
-        kiteTableNumbers[3][3] = 7;
-        kiteTableNumbers[3][4] = 7;
-        kiteTableNumbers[3][5] = 8;
-        kiteTableNumbers[3][6] = 9;
-        kiteTableNumbers[3][7] = 9;
-        kiteTableNumbers[3][8] = 10;
-        kiteTableNumbers[3][9] = 11;
-        kiteTableNumbers[3][10] = 12;
-        kiteTableNumbers[3][11] = 12;
+        kiteSizes[1][0] = 3;
+        kiteSizes[1][1] = 4;
+        kiteSizes[1][2] = 4;
+        kiteSizes[1][3] = 5;
+        kiteSizes[1][4] = 5;
+        kiteSizes[1][5] = 6;
+        kiteSizes[1][6] = 7;
+        kiteSizes[1][7] = 7;
+        kiteSizes[1][8] = 8;
+        kiteSizes[1][9] = 8;
+        kiteSizes[1][10] = 9;
+        kiteSizes[1][11] = 9;
+        kiteSizes[1][12] = 28;
 
-        kiteTableNumbers[4][0] = 5;
-        kiteTableNumbers[4][1] = 6;
-        kiteTableNumbers[4][2] = 7;
-        kiteTableNumbers[4][3] = 7;
-        kiteTableNumbers[4][4] = 8;
-        kiteTableNumbers[4][5] = 9;
-        kiteTableNumbers[4][6] = 10;
-        kiteTableNumbers[4][7] = 11;
-        kiteTableNumbers[4][8] = 11;
-        kiteTableNumbers[4][9] = 12;
-        kiteTableNumbers[4][10] = 13;
-        kiteTableNumbers[4][11] = 14;
+        kiteSizes[2][0] = 4;
+        kiteSizes[2][1] = 5;
+        kiteSizes[2][2] = 5;
+        kiteSizes[2][3] = 6;
+        kiteSizes[2][4] = 6;
+        kiteSizes[2][5] = 7;
+        kiteSizes[2][6] = 8;
+        kiteSizes[2][7] = 8;
+        kiteSizes[2][8] = 9;
+        kiteSizes[2][9] = 9;
+        kiteSizes[2][10] = 10;
+        kiteSizes[2][11] = 11;
+        kiteSizes[2][12] = 24;
 
-        kiteTableNumbers[5][0] = 6;
-        kiteTableNumbers[5][1] = 6;
-        kiteTableNumbers[5][2] = 7;
-        kiteTableNumbers[5][3] = 8;
-        kiteTableNumbers[5][4] = 9;
-        kiteTableNumbers[5][5] = 10;
-        kiteTableNumbers[5][6] = 11;
-        kiteTableNumbers[5][7] = 12;
-        kiteTableNumbers[5][8] = 13;
-        kiteTableNumbers[5][9] = 14;
-        kiteTableNumbers[5][10] = 14;
-        kiteTableNumbers[5][11] = 15;
+        kiteSizes[3][0] = 4;
+        kiteSizes[3][1] = 5;
+        kiteSizes[3][2] = 6;
+        kiteSizes[3][3] = 7;
+        kiteSizes[3][4] = 7;
+        kiteSizes[3][5] = 8;
+        kiteSizes[3][6] = 9;
+        kiteSizes[3][7] = 9;
+        kiteSizes[3][8] = 10;
+        kiteSizes[3][9] = 11;
+        kiteSizes[3][10] = 12;
+        kiteSizes[3][11] = 12;
+        kiteSizes[3][12] = 21;
 
-        kiteTableNumbers[6][0] = 6;
-        kiteTableNumbers[6][1] = 7;
-        kiteTableNumbers[6][2] = 8;
-        kiteTableNumbers[6][3] = 9;
-        kiteTableNumbers[6][4] = 10;
-        kiteTableNumbers[6][5] = 11;
-        kiteTableNumbers[6][6] = 12;
-        kiteTableNumbers[6][7] = 13;
-        kiteTableNumbers[6][8] = 14;
-        kiteTableNumbers[6][9] = 15;
-        kiteTableNumbers[6][10] = 16;
-        kiteTableNumbers[6][11] = 17;
+        kiteSizes[4][0] = 5;
+        kiteSizes[4][1] = 6;
+        kiteSizes[4][2] = 7;
+        kiteSizes[4][3] = 7;
+        kiteSizes[4][4] = 8;
+        kiteSizes[4][5] = 9;
+        kiteSizes[4][6] = 10;
+        kiteSizes[4][7] = 11;
+        kiteSizes[4][8] = 11;
+        kiteSizes[4][9] = 12;
+        kiteSizes[4][10] = 13;
+        kiteSizes[4][11] = 14;
+        kiteSizes[4][12] = 19;
 
-        kiteTableNumbers[7][0] = 7;
-        kiteTableNumbers[7][1] = 8;
-        kiteTableNumbers[7][2] = 9;
-        kiteTableNumbers[7][3] = 10;
-        kiteTableNumbers[7][4] = 11;
-        kiteTableNumbers[7][5] = 12;
-        kiteTableNumbers[7][6] = 13;
-        kiteTableNumbers[7][7] = 14;
-        kiteTableNumbers[7][8] = 15;
-        kiteTableNumbers[7][9] = 16;
-        kiteTableNumbers[7][10] = 17;
-        kiteTableNumbers[7][11] = 18;
+        kiteSizes[5][0] = 6;
+        kiteSizes[5][1] = 6;
+        kiteSizes[5][2] = 7;
+        kiteSizes[5][3] = 8;
+        kiteSizes[5][4] = 9;
+        kiteSizes[5][5] = 10;
+        kiteSizes[5][6] = 11;
+        kiteSizes[5][7] = 12;
+        kiteSizes[5][8] = 13;
+        kiteSizes[5][9] = 14;
+        kiteSizes[5][10] = 14;
+        kiteSizes[5][11] = 15;
+        kiteSizes[5][12] = 17;
 
-        kiteTableNumbers[8][0] = 7;
-        kiteTableNumbers[8][1] = 8;
-        kiteTableNumbers[8][2] = 10;
-        kiteTableNumbers[8][3] = 11;
-        kiteTableNumbers[8][4] = 12;
-        kiteTableNumbers[8][5] = 13;
-        kiteTableNumbers[8][6] = 14;
-        kiteTableNumbers[8][7] = 15;
-        kiteTableNumbers[8][8] = 16;
-        kiteTableNumbers[8][9] = 18;
-        kiteTableNumbers[8][10] = 19;
-        kiteTableNumbers[8][11] = 20;
+        kiteSizes[6][0] = 6;
+        kiteSizes[6][1] = 7;
+        kiteSizes[6][2] = 8;
+        kiteSizes[6][3] = 9;
+        kiteSizes[6][4] = 10;
+        kiteSizes[6][5] = 11;
+        kiteSizes[6][6] = 12;
+        kiteSizes[6][7] = 13;
+        kiteSizes[6][8] = 14;
+        kiteSizes[6][9] = 15;
+        kiteSizes[6][10] = 16;
+        kiteSizes[6][11] = 17;
+        kiteSizes[6][12] = 15;
 
-        kiteTableNumbers[9][0] = 8;
-        kiteTableNumbers[9][1] = 9;
-        kiteTableNumbers[9][2] = 10;
-        kiteTableNumbers[9][3] = 12;
-        kiteTableNumbers[9][4] = 13;
-        kiteTableNumbers[9][5] = 14;
-        kiteTableNumbers[9][6] = 15;
-        kiteTableNumbers[9][7] = 16;
-        kiteTableNumbers[9][8] = 18;
-        kiteTableNumbers[9][9] = 19;
-        kiteTableNumbers[9][10] = 20;
-        kiteTableNumbers[9][11] = 21;
+        kiteSizes[7][0] = 7;
+        kiteSizes[7][1] = 8;
+        kiteSizes[7][2] = 9;
+        kiteSizes[7][3] = 10;
+        kiteSizes[7][4] = 11;
+        kiteSizes[7][5] = 12;
+        kiteSizes[7][6] = 13;
+        kiteSizes[7][7] = 14;
+        kiteSizes[7][8] = 15;
+        kiteSizes[7][9] = 16;
+        kiteSizes[7][10] = 17;
+        kiteSizes[7][11] = 18;
+        kiteSizes[7][12] = 14;
 
-        kiteTableNumbers[10][0] = 8;
-        kiteTableNumbers[10][1] = 10;
-        kiteTableNumbers[10][2] = 11;
-        kiteTableNumbers[10][3] = 12;
-        kiteTableNumbers[10][4] = 14;
-        kiteTableNumbers[10][5] = 15;
-        kiteTableNumbers[10][6] = 16;
-        kiteTableNumbers[10][7] = 18;
-        kiteTableNumbers[10][8] = 19;
-        kiteTableNumbers[10][9] = 20;
-        kiteTableNumbers[10][10] = 22;
-        kiteTableNumbers[10][11] = 23;
+        kiteSizes[8][0] = 7;
+        kiteSizes[8][1] = 8;
+        kiteSizes[8][2] = 10;
+        kiteSizes[8][3] = 11;
+        kiteSizes[8][4] = 12;
+        kiteSizes[8][5] = 13;
+        kiteSizes[8][6] = 14;
+        kiteSizes[8][7] = 15;
+        kiteSizes[8][8] = 16;
+        kiteSizes[8][9] = 18;
+        kiteSizes[8][10] = 19;
+        kiteSizes[8][11] = 20;
+        kiteSizes[8][12] = 13;
 
-        kiteTableNumbers[11][0] = 9;
-        kiteTableNumbers[11][1] = 10;
-        kiteTableNumbers[11][2] = 12;
-        kiteTableNumbers[11][3] = 13;
-        kiteTableNumbers[11][4] = 15;
-        kiteTableNumbers[11][5] = 16;
-        kiteTableNumbers[11][6] = 17;
-        kiteTableNumbers[11][7] = 19;
-        kiteTableNumbers[11][8] = 20;
-        kiteTableNumbers[11][9] = 22;
-        kiteTableNumbers[11][10] = 23;
-        kiteTableNumbers[11][11] = 24;
+        kiteSizes[9][0] = 8;
+        kiteSizes[9][1] = 9;
+        kiteSizes[9][2] = 10;
+        kiteSizes[9][3] = 12;
+        kiteSizes[9][4] = 13;
+        kiteSizes[9][5] = 14;
+        kiteSizes[9][6] = 15;
+        kiteSizes[9][7] = 16;
+        kiteSizes[9][8] = 18;
+        kiteSizes[9][9] = 19;
+        kiteSizes[9][10] = 20;
+        kiteSizes[9][11] = 21;
+        kiteSizes[9][12] = 12;
 
-        int rowsAreKnots = 12;
-        int columnsAreWeights = 12;
+        kiteSizes[10][0] = 8;
+        kiteSizes[10][1] = 10;
+        kiteSizes[10][2] = 11;
+        kiteSizes[10][3] = 12;
+        kiteSizes[10][4] = 14;
+        kiteSizes[10][5] = 15;
+        kiteSizes[10][6] = 16;
+        kiteSizes[10][7] = 18;
+        kiteSizes[10][8] = 19;
+        kiteSizes[10][9] = 20;
+        kiteSizes[10][10] = 22;
+        kiteSizes[10][11] = 23;
+        kiteSizes[10][12] = 11;
 
-        int i, j;
-        //TODO the loops work and kick out the full/correct table. But need to figure out how to access the correct data
-        for (i = 0; i < rowsAreKnots; i++) {
-            for (j = 0; j < columnsAreWeights; j++) {
-                System.out.print(kiteTableNumbers[i][j] + " ");// this is just here to show the table, will be replace with something useful
+        kiteSizes[11][0] = 9;
+        kiteSizes[11][1] = 10;
+        kiteSizes[11][2] = 12;
+        kiteSizes[11][3] = 13;
+        kiteSizes[11][4] = 15;
+        kiteSizes[11][5] = 16;
+        kiteSizes[11][6] = 17;
+        kiteSizes[11][7] = 19;
+        kiteSizes[11][8] = 20;
+        kiteSizes[11][9] = 22;
+        kiteSizes[11][10] = 23;
+        kiteSizes[11][11] = 24;
+        kiteSizes[11][12] = 10;
+
+        int weightRow = 12;
+        int w;
+
+        for (w = 0; w < weightRow; w++) {
+            System.out.print(topRow[w] + " ");
+        }
+        System.out.print("<-Weight");
+        System.out.print("\n\t\t\t\t\t\tKPH\n");
+
+        int rowsForKnotValues = 12;
+        int columnsForWeightValues = 13;
+        int kv, wv;
+
+        for (kv = 0; kv < rowsForKnotValues; kv++) {
+            for (wv = 0; wv < columnsForWeightValues; wv++) {
+                if (kiteSizes[kv][wv] < 10)
+                    System.out.print(kiteSizes[kv][wv] + "   ");
+                else
+                    System.out.print(kiteSizes[kv][wv] + "  ");
             }
-            System.out.println("");// this is just here to show the table. Same as above.
+            System.out.println();
         }
         return theKiteSize; //Does nothing yet. But this should pass data to KiteSizeTest.java
     }
