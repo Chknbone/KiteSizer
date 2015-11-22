@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class WeightTest {
-  //TODO figure out how to test for unknown user input instead of test provided.
+  //TODO figure out how to test for unknown user input instead of test provided input.
     
     @Test //testing the 'AskForWeight' class & 'getWeight' method
     public void testWeight() {

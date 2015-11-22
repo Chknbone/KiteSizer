@@ -10,7 +10,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ WeightTest.class, WindTest.class })
+@SuiteClasses({ WeightTest.class, WindTest.class, KiteSizeTest.class })
 public class AllKiteSizerTests {
 
 }

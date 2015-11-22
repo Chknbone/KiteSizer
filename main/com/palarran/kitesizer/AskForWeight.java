@@ -15,7 +15,12 @@ public class AskForWeight {
 
     //constructor
     public AskForWeight() {
-        userWeight = 0;
+        userWeight = 0; //this would be called like: userWeight exampleWeight = new userWeight(); 
+                                                     //exampleWeight.setuserWeight(100);
+    }
+    
+    public AskForWeight(int userWeight) { //constructors are allowed to have duplicate names.
+        setWeight(userWeight); //this would be called like: userWeight exampleWeight = new userWeight(100);
     }
 
     //getters and setters
@@ -32,7 +37,7 @@ public class AskForWeight {
         else 
             System.out.println("Your weight is " + weightInput);
 
-        //TODO figure out if 'getWeight' needs to be closed. closing here kills the second test.
+        //TODO figure out if 'getWeight' needs to be closed. closing here kills the second test in WeightTest.java.
         //getWeight.close(); 
         
         userWeight = weightInput;

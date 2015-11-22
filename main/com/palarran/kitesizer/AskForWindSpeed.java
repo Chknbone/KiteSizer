@@ -8,15 +8,22 @@ package com.palarran.kitesizer;
 
 import java.util.Scanner;
 
-//fields
-public class AskForWindSpeed {
 
+public class AskForWindSpeed {
+    
+    //fields
     private int windSpeed;
 
     //constructor
     public AskForWindSpeed() {
-        windSpeed = 0;
+        windSpeed = 0; //this would be called like: windSpeed exampleSpeed = new windSpeed(); 
+                                                    //exampleSpeed.setwindSpeed(15);
     }
+    
+    public AskForWindSpeed(int windSpeed) { //constructors are allowed to have duplicate names.
+        setWind(windSpeed); //this would be called like: windSpeed exampleSpeed = new windSpeed(15);
+    }
+    
     
     //getters and setters
     public int getWind() { //allows any class to return/use the "windSpeed" variable
@@ -32,7 +39,7 @@ public class AskForWindSpeed {
         else
             System.out.println("Wind speed is: " + windInput);
         
-        //TODO figure out if 'getWind' needs to be closed. closing here kills the second test.
+        //TODO figure out if 'getWind' needs to be closed. closing here kills the second test in WindTest.java.
         //getWind.close();
         
         windSpeed = windInput;
