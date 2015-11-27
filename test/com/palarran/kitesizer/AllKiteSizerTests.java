@@ -1,7 +1,7 @@
 /* AllKiteSizeTest.java
  * Dev: CB
  * 
- * Test suite for all the JUnit test in the KiteSizer project.
+ * Test suite for all the JUnit test in the KiteSizeDB project.
  */
 package com.palarran.kitesizer;
 

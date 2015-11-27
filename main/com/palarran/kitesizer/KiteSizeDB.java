@@ -1,29 +1,42 @@
-/* KiteSizer.java
+/* KiteSizeDB.java
  * Dev: CB
  * 
  * Checking the Kite Size table for the correct kite size using user provided weight and wind speed.
+ * Change: Was 'KiteSizer.java' refactored to 'KiteSizeDB'.
  */
 
 package com.palarran.kitesizer;
 
-public class KiteSizer {
-    
-  //fields
+import java.util.ArrayList;
+
+public class KiteSizeDB {
+
+    //fields
     private int theKiteSize;
-    
+    private ArrayList<Weight> weights;
+    private ArrayList<WindSpeed> speeds;
+
     //constructor
-    public KiteSizer() {
-        theKiteSize = 0; //this would be called like: theKiteSize exampleSize = new theKiteSize(); 
-                         //exampleSize.settheKiteSize(9);
-    }
-    
-    public KiteSizer(int theKiteSize) { //constructors are allowed to have duplicate names.
+    public KiteSizeDB(int theKiteSize) { //constructors are allowed to have duplicate names.
         setTheKiteSize(theKiteSize); //this would be called like: theKiteSize exampleKiteSize = new theKiteSize(9);
     }
-    
+
+    public KiteSizeDB() {
+        weights = new ArrayList<Weight>();
+        speeds = new ArrayList<WindSpeed>();
+    }
+
     //getters and setters
+    public ArrayList<Weight> getWeight() {
+        return weights;
+    }
+    
+    public ArrayList<WindSpeed> getWindSpeed() {
+        return speeds;
+    }
+    
     public int getTheKiteSize() {
-        
+
         int[] topRow = new int[12];
 
         topRow[0] = 95;
@@ -237,7 +250,7 @@ public class KiteSizer {
     public void setTheKiteSize(int theKiteSize) { //allows any class to change the "theKiteSize" variable
         this.theKiteSize = theKiteSize;
     }
-    
+
     public String toString() { //this overrides java's default 'toString' to a human readable string, but i cannot remember why exactly I did it
         return "The recommend kite size is: " + this.getTheKiteSize();
     }

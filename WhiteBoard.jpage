@@ -1,4 +1,4 @@
-class KiteTable {
+Searching for and returning arraylist values and index numbersSyntax error, insert ")" to complete ExpressionArraylist cannot be resolved to a typeArayList<String> names = new Arraylist<String>();        names.add("Captain");        names.add("Mal");        System.out.print(names.indexOf("Mal")); //returns the index(position in Array) of the value "Mal"        System.out.print(names.contains("Mal")); // returns true/false if the Array contain the value "Mal"class KiteTable {
     public void main(String args[]) {
         int t, i;
         int table[][] = new int [12][12];

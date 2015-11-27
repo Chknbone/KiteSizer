@@ -13,16 +13,16 @@ import org.junit.Test;
 public class WeightTest {
   //TODO figure out how to test for unknown user input instead of test provided input.
     
-    @Test //testing the 'AskForWeight' class & 'getWeight' method
+    @Test //testing the 'Weight' class & 'getWeight' method
     public void testWeight() {
-        AskForWeight testWeight1 = new AskForWeight();
+        Weight testWeight1 = new Weight();
         int result = testWeight1.getWeight();
         assertEquals(0, result);
     }
     
     @Test //testing the 'setWeight' method
     public void testSetWeight() {
-        AskForWeight testWeight2 = new AskForWeight();
+        Weight testWeight2 = new Weight();
         testWeight2.setWeight(222);
         assertEquals(222, testWeight2.getWeight());
     }
