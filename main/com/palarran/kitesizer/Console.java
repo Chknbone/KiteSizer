@@ -6,50 +6,67 @@
  */
 package com.palarran.kitesizer;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class Console {
 
     public static void main(String[] args) {
+
         // TODO initialize KiteSizeDB database
+        KiteSizeDB prodDB = new KiteSizeDB();
+        prodDB.bootstrapKiteSizeDB();
+        prodDB.bootstrapWeightDB();
+        prodDB.bootstrapSpeedDB();
+
         // TODO initialize Console
-        // TODO ask for user weight and add to DB
-        // pulled from 'Weight', will live here now.
-        Scanner getWeight = new Scanner(System.in);
+        boolean programRunning = true;
+        BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in));
+        int userWeightPounds = 0;
+        int windSpeedKnots = 0;
 
-        System.out.print("Enter your weight in pounds: ");
+        while (programRunning) {
+            // TODO ask for user weight and add to DB
+            System.out.print(
+                    "This App will determine what size kite you should us based on your weight and the wind speed you provide.");
+            System.out.println("\nFrom the following list: ");
+            for (Weight data : prodDB.getWeight()) {
+                System.out.println(data);
+            }
 
-        int weightInput = getWeight.nextInt();
+            System.out.println("Enter the weight closet to your weight. Prices Right rules apply");
+            try {
+                userWeightPounds = Integer.parseInt(consoleInput.readLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Weights provided must be integers");
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
-        if (weightInput < 95 | weightInput > 300)
-            System.out.println("Try again. Enter a weight between 95 and 300 pounds.");
-        else
-            System.out.println("Your weight is " + weightInput);
+            // TODO show available wind speeds and ask  for input
+            System.out.println("\nFrom the following list of wind Speeds: ");
+            for (WindSpeed data : prodDB.getWindSpeed()) {
+                System.out.println(data);
+            }
 
-        //TODO figure out if 'getWeight' needs to be closed. closing here kills the second test in WeightTest.java.
-        //getWeight.close(); 
-        
-        userWeight = weightInput;
-        
-        // TODO show available windspeed and ask  for input
-        // pulled from 'WindSpeed.java', will live here now.
-        Scanner getWind = new Scanner(System.in);
+            System.out.println(
+                    "Enter the wind speed closet to the wind speed you are gonna kite in. Prices Right rules apply here as well");
+            try {
+                windSpeedKnots = Integer.parseInt(consoleInput.readLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Wind speeds provided must be integers");
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
-        System.out.print("Enter the wind speed in knots: ");
-
-        int windInput = getWind.nextInt();
-
-        if (windInput < 10 | windInput > 40)
-            System.out.println("Try again. Enter a wind speed between 10 and 40 knots.");
-        else
-            System.out.println("Wind speed is: " + windInput);
-
-        //TODO figure out if 'getWind' needs to be closed. closing here kills the second test in WindTest.java.
-        //getWind.close();
-
-        windSpeed = windInput;
-        // TODO combine weight and wind and show suggested kite size
-
+            // TODO combine weight and wind and show suggested kite size
+            String kiteInfo = prodDB.addKiteSize(userWeightPounds, windSpeedKnots);
+            System.out.println("\nEvaluation successfull. Here are your details: ");
+            System.out.println(kiteInfo + "\n");
+        }
     }
-
 }

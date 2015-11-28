@@ -17,7 +17,7 @@ public class KiteSizeTest {
     @Test //testing the 'KiteSizeDB' class & 'getTheKiteSize' method
     public void testKiteSize() { 
         KiteSizeDB testKiteSize1 = new KiteSizeDB();
-        int result = testKiteSize1.getTheKiteSize();
+        int result = testKiteSize1.bootstrapKiteSizeDB();
         assertEquals(0, result);
     }
     
@@ -25,7 +25,7 @@ public class KiteSizeTest {
     public void testSetKiteSize() { 
         KiteSizeDB testKiteSize2 = new KiteSizeDB();
         testKiteSize2.setTheKiteSize(12);
-        assertEquals(12, testKiteSize2.getTheKiteSize());
+        assertEquals(12, testKiteSize2.bootstrapKiteSizeDB());
     }
 }
     

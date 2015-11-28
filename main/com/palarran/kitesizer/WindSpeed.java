@@ -32,6 +32,6 @@ public class WindSpeed {
     }
 
     public String toString() { //this overrides java's default 'toString' to a human readable string, but i cannot remember why I did it
-        return "Wind Speed is: " + this.getWind();
+        return "Wind Speed: " + this.getWind();
     }
 }

@@ -31,7 +31,7 @@ public class Weight {
         userWeight = newWeight;
     }
 
-    public String toString() { //this overrides java's default 'toString' to a human readable string, but i cannot remember why I did it
+    public String toString() { //this overrides java's default 'toString' to a human readable string.
         return "User Weight: " + this.getWeight();
     }
 }
