@@ -8,22 +8,49 @@
 package com.palarran.kitesizer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class KiteSizeDB {
 
     //fields
     private ArrayList<Weight> weights;
     private ArrayList<WindSpeed> speeds;
-    private ArrayList<Kite> sizes;
+    private ArrayList<UserName> users;
+
+    private void Kite(Arrays sizes) {
+
+    }
+
+    private static Logger kiteSizeDBLog = Logger.getLogger(KiteSizeDB.class.getName());
+    private static ConsoleHandler logScreen = new ConsoleHandler();
 
     //constructor
     public KiteSizeDB() {
         weights = new ArrayList<Weight>();
         speeds = new ArrayList<WindSpeed>();
-        sizes = new ArrayList<Kite>();
+        users = new ArrayList<UserName>();
     }
 
+    public KiteSizeDB(Kite sizes) {
+        sizes = new Kite(sizes);
+    }
+
+    //    private void Kite(Arrays sizes) {
+    //        // TODO Auto-generated method stub
+    //        
+    //    }
+
     //getters and setters
+    public void setLogging() {
+        kiteSizeDBLog.addHandler(logScreen);
+        kiteSizeDBLog.setLevel(Level.FINE);
+        kiteSizeDBLog.setUseParentHandlers(false);
+        logScreen.setLevel(Level.FINE);
+    }
+
     public ArrayList<Weight> getWeight() {
         return weights;
     }
@@ -32,92 +59,135 @@ public class KiteSizeDB {
         return speeds;
     }
 
-    public ArrayList<Kite> getKite() {
-        return sizes;
+    public Arrays[][] getKite() {
+        return getKite();
     }
 
-    public void addSpeed(int speedChoices) {
-        speeds.add(new WindSpeed(speedChoices));
+    public ArrayList<UserName> getUsers() {
+        return users;
+    }
+
+    public boolean addUser(String userName) {
+        boolean userExist = false;
+        for (UserName data : getUsers()) {
+            if (userName.equals(data.getName())) {
+                userExist = true;
+            }
+        }
+        if (userExist == false) {
+            users.add(new UserName(userName));
+        }
+        return userExist;
     }
 
     public void addWeight(int weightChoices) {
         weights.add(new Weight(weightChoices));
     }
 
-    public boolean addWeight(Integer usersWeight) {
-        boolean weightCorrect = false;
-        for (Weight check : getWeight()) {
-            if (usersWeight.equals(check.getWeight())) {
-                weightCorrect = true;
-            }
-        }
-        if (weightCorrect == false) {
-            weights.add(new Weight(usersWeight));
-        }
-        return weightCorrect;
+    public void addSpeed(int speedChoices) {
+        speeds.add(new WindSpeed(speedChoices));
     }
 
-    public String addKiteSize(int pounds, int knots) {
+    public void addSize(Kite kiteSizes) {
+        Kite.add(new Kite(kiteSizes));
+    }
 
-        //finding user weight object
-        Weight kiteWeight = null;
-        for (Weight data : getWeight()) {
-            if (pounds == data.getWeight()) {
-                kiteWeight = data;
+    public String addKiteSize(String userName, int userWeight, int userSpeed) {
+        kiteSizeDBLog.fine("Starting the process");
+        //finding user object
+        kiteSizeDBLog.fine("Getting user name");
+        UserName kiteBoarder = null;
+        for (UserName data : getUsers()) {
+            if (userName.equals(data.getName())) {
+                kiteBoarder = data;
             }
         }
-
+        //finding user weight object
+        //TODO need to determine array index of userWeight
+        kiteSizeDBLog.fine("Getting users weight");
+        Weight kiteWeight = null;
+        for (Weight data : getWeight()) {
+            kiteSizeDBLog.fine("Comparing " + userWeight + " to " + data.getWeight());
+            if (userWeight == data.getWeight()) {
+                kiteWeight = data;
+            }
+            int weightIndex = getWeight().indexOf(kiteWeight);
+           
+        }
+       
         //finding wind Speed object
+        //TODO determine array index of userSpeed
+        kiteSizeDBLog.fine("Getting wind speed");
         WindSpeed kiteSpeed = null;
         for (WindSpeed data : getWindSpeed()) {
-            if (knots == data.getWind()) {
+            if (userSpeed == data.getWind()) {
                 kiteSpeed = data;
             }
         }
 
+        Arrays kiteSizes = null;
+        int rowsForKnotValues = 12;
+        int columnsForWeightValues = 12;
+        int kv, wv;
+
+        for (kv = 0; kv < rowsForKnotValues; kv++) {
+            for (wv = 0; wv < columnsForWeightValues; wv++) {
+                kiteSizes[userWeight][kiteSpeed] = kiteSizes[][];
+                //TODO add some logic here to return the kite size
+
+                System.out.println();
+            }
+        }
+
         //Determine kite size
-        Kite tempKite = new Kite();
+        kiteSizeDBLog.fine("Getting kite size and adding it all togather");
+        Kite tempKite = new Kite(null);
+        tempKite.setUsers(kiteBoarder);
         tempKite.setWeights(kiteWeight);
         tempKite.setSpeeds(kiteSpeed);
-        sizes.add(tempKite);
+        tempKite.setSizes(kiteSizes);
+        //tempKite.setTodaysDate(todaysDate);
+        Kite.add(tempKite);
+        kiteSizeDBLog.fine("DONE!");
         return tempKite.toString();
-    }
-
-    public void bootstrapSpeedDB() {
-
-        addSpeed(95);
-        addSpeed(110);
-        addSpeed(125);
-        addSpeed(140);
-        addSpeed(155);
-        addSpeed(170);
-        addSpeed(185);
-        addSpeed(200);
-        addSpeed(215);
-        addSpeed(230);
-        addSpeed(245);
-        addSpeed(260);
     }
 
     public void bootstrapWeightDB() {
 
-        addWeight(34);
-        addWeight(28);
-        addWeight(24);
-        addWeight(21);
-        addWeight(19);
-        addWeight(17);
-        addWeight(15);
-        addWeight(14);
-        addWeight(13);
-        addWeight(12);
-        addWeight(11);
-        addWeight(10);
+        addWeight(95);
+        addWeight(110);
+        addWeight(125);
+        addWeight(140);
+        addWeight(155);
+        addWeight(170);
+        addWeight(185);
+        addWeight(200);
+        addWeight(215);
+        addWeight(230);
+        addWeight(245);
+        addWeight(260);
     }
 
+    public void bootstrapSpeedDB() {
+
+        addSpeed(34);
+        addSpeed(28);
+        addSpeed(24);
+        addSpeed(21);
+        addSpeed(19);
+        addSpeed(17);
+        addSpeed(15);
+        addSpeed(14);
+        addSpeed(13);
+        addSpeed(12);
+        addSpeed(11);
+        addSpeed(10);
+    }
+
+    //TODO Nothing south of here really works like it should.
     public void bootstrapKiteSizeDB() {
 
-        int[][] kiteSizes = new int[13][13];
+        int[][] kiteSizes = new int[12][12];
 
         kiteSizes[0][0] = 3;
         kiteSizes[0][1] = 3;
@@ -275,21 +345,16 @@ public class KiteSizeDB {
         kiteSizes[11][10] = 23;
         kiteSizes[11][11] = 24;
     }
-
-    public void kiteTable() {
-    int rowsForKnotValues = 12;
-    int columnsForWeightValues = 12;
-    int kv, wv;
-
-        for(kv=0;kv<rowsForKnotValues;kv++) {
-            for (wv = 0; wv < columnsForWeightValues; wv++) {
-                if (kiteSizes[kv][wv] < 10) {
-                    System.out.print(kiteSizes[kv][wv] + "   ");
-                } else {
-                    System.out.print(kiteSizes[kv][wv] + "  ");
-                }
-                System.out.println();
-            }
-        }
-    }
+    //        int rowsForKnotValues = 12;
+    //        int columnsForWeightValues = 12;
+    //        int kv, wv;
+    //
+    //        for (kv = 0; kv < rowsForKnotValues; kv++) {
+    //            for (wv = 0; wv < columnsForWeightValues; wv++) {
+    //                //TODO add some logic here to return the kite size
+    //                
+    //                System.out.println();
+    //            }
+    //        }
+    //        kiteSizes[weightIndex][speedIndex] = kiteSizes[][];
 }

@@ -9,26 +9,45 @@ package com.palarran.kitesizer;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 
 public class Console {
 
     public static void main(String[] args) {
 
-        // TODO initialize KiteSizeDB database
+        // initialize KiteSizeDB database
         KiteSizeDB prodDB = new KiteSizeDB();
-        prodDB.bootstrapKiteSizeDB();
         prodDB.bootstrapWeightDB();
         prodDB.bootstrapSpeedDB();
+        prodDB.bootstrapKiteSizeDB();
+        prodDB.setLogging();
 
-        // TODO initialize Console
+        // initialize Console
         boolean programRunning = true;
         BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in));
+        String userName = null;
         int userWeightPounds = 0;
         int windSpeedKnots = 0;
-
+        int kiteSize = 0;
+        
         while (programRunning) {
-            // TODO ask for user weight and add to DB
+            //ask for users name and add it to DB
+            System.out.println("Enter your name: ");
+
+            try {
+                userName = consoleInput.readLine();
+            } catch (IOException e) {
+                System.out.println("Names only, no numbers. Try again.");
+            }
+
+            boolean nameResult = prodDB.addUser(userName);
+
+            if (nameResult) {
+                System.out.println("Welcome back " + userName);
+            } else {
+                System.out.println("Welcome " + userName);
+            }
+
+            // ask for user weight and add to DB
             System.out.print(
                     "This App will determine what size kite you should us based on your weight and the wind speed you provide.");
             System.out.println("\nFrom the following list: ");
@@ -42,11 +61,10 @@ public class Console {
             } catch (NumberFormatException e) {
                 System.out.println("Weights provided must be integers");
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
-            // TODO show available wind speeds and ask  for input
+            //show available wind speeds and ask  for input
             System.out.println("\nFrom the following list of wind Speeds: ");
             for (WindSpeed data : prodDB.getWindSpeed()) {
                 System.out.println(data);
@@ -59,13 +77,13 @@ public class Console {
             } catch (NumberFormatException e) {
                 System.out.println("Wind speeds provided must be integers");
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-
+            
+            
             // TODO combine weight and wind and show suggested kite size
-            String kiteInfo = prodDB.addKiteSize(userWeightPounds, windSpeedKnots);
-            System.out.println("\nEvaluation successfull. Here are your details: ");
+            String kiteInfo = prodDB.addKiteSize(userName, userWeightPounds, windSpeedKnots);
+            System.out.println("\nMaths done. Here are the details: ");
             System.out.println(kiteInfo + "\n");
         }
     }

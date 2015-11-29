@@ -32,6 +32,6 @@ public class Weight {
     }
 
     public String toString() { //this overrides java's default 'toString' to a human readable string.
-        return "User Weight: " + this.getWeight();
+        return "weight at " + this.getWeight() + " pounds";
     }
 }
