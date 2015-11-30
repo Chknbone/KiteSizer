@@ -20,9 +20,10 @@ public class Databases {
     private ArrayList<Weight> weights;
     private ArrayList<WindSpeed> speeds;
 
-    private void Kite(Arrays sizes) {
+    private ArrayList<Kite> sizes;
+    //private void Arrays(Kite sizes) {
 
-    }
+    //}
 
     private static Logger kiteSizeDBLog = Logger.getLogger(Databases.class.getName());
     private static ConsoleHandler logScreen = new ConsoleHandler();
@@ -32,11 +33,12 @@ public class Databases {
         users = new ArrayList<UserName>();
         weights = new ArrayList<Weight>();
         speeds = new ArrayList<WindSpeed>();
+        sizes = new ArrayList<Kite>();
     }
 
-    public Databases(Kite sizes) {
-        sizes = new Kite(sizes);
-    }
+    //    public Databases(Kite sizes) {
+    //        sizes = new Kite(sizes);
+    //    }
 
     //    private void Kite(Arrays sizes) {
     //        // TODO Auto-generated method stub
@@ -63,9 +65,12 @@ public class Databases {
         return speeds;
     }
 
-    public Arrays getKite() {
-        return getKite();
+    public ArrayList<Kite> getKite() {
+        return sizes;
     }
+    //    public Kite getKite() {
+    //        return getKite();
+    //    }
 
     public void addWeight(int weightChoices) {
         weights.add(new Weight(weightChoices));
@@ -92,7 +97,7 @@ public class Databases {
         return userExist;
     }
 
-    public String addKiteSize(String userName, int userWeight, int userSpeed, int kiteSize) {
+    public String addKiteSize(String userName, int userWeight, int userSpeed, Kite kiteSizes) {
         kiteSizeDBLog.fine("Starting the process");
         //finding user object
         kiteSizeDBLog.fine("Getting user name");
@@ -125,8 +130,9 @@ public class Databases {
 
         }
 
-        //TODO the below kiteSizes Arrays is not working. The loop works, but have not figure out how to use the indexes above to pull the right kite size out of the Array below.
-        Kite kiteSizes = null;
+        //TODO below is not working. The loop works on it's own, I can get the the indexes as well.
+        //but I cannot seem to get past that. Not sure i'm correct on usage of the 2D array. 
+
         int rowsForKnotValues = 12;
         int columnsForWeightValues = 12;
         int kv, wv;
@@ -134,15 +140,18 @@ public class Databases {
         int speedIndex = getWindSpeed().indexOf(kiteSpeed);
         int weightIndex = getWeight().indexOf(kiteWeight);
 
-        for (kv = 0; kv < rowsForKnotValues; kv++) {
-            for (wv = 0; wv < columnsForWeightValues; wv++) {
-                
-                Arrays[][] finalKiteSize = new Arrays [weightIndex][speedIndex];
-               
-                kiteSizeDBLog.fine("Arrays output " + finalKiteSize);
-                //TODO God Dammit. I lost the plot here. I'm using Arrays wrong somehow.
-
-                System.out.println();
+        Kite kiteSized = null;
+        for (Kite data : getKite()) {
+            if (kiteSizes == data.getSizes()) {
+                kiteSized = data;
+            }
+            for (kv = 0; kv < rowsForKnotValues; kv++) {
+                for (wv = 0; wv < columnsForWeightValues; wv++) {
+                    if (kiteSizes[kv][wv] == kiteSizes[speedIndex][weightIndex])
+                    int finalKiteSize = kiteSizes[speedIndex][weightIndex];
+                    kiteSizeDBLog.fine("Arrays output " + finalKiteSize);
+                    //TODO God Dammit. Lost the plot here. Using this array wrong somehow.
+                }
             }
         }
 
@@ -351,5 +360,5 @@ public class Databases {
         kiteSizes[11][10] = 23;
         kiteSizes[11][11] = 24;
     }
-    
+
 }
