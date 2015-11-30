@@ -20,7 +20,7 @@ public class Databases {
     private ArrayList<Weight> weights;
     private ArrayList<WindSpeed> speeds;
 
-    private void theKite(Arrays sizes) {
+    private void Kite(Arrays sizes) {
 
     }
 
@@ -126,7 +126,7 @@ public class Databases {
         }
 
         //TODO the below kiteSizes Arrays is not working. The loop works, but have not figure out how to use the indexes above to pull the right kite size out of the Array below.
-        theKite kiteSizes = null;
+        Kite kiteSizes = null;
         int rowsForKnotValues = 12;
         int columnsForWeightValues = 12;
         int kv, wv;
@@ -351,16 +351,5 @@ public class Databases {
         kiteSizes[11][10] = 23;
         kiteSizes[11][11] = 24;
     }
-    //        int rowsForKnotValues = 12;
-    //        int columnsForWeightValues = 12;
-    //        int kv, wv;
-    //
-    //        for (kv = 0; kv < rowsForKnotValues; kv++) {
-    //            for (wv = 0; wv < columnsForWeightValues; wv++) {
-    //                //TODO add some logic here to return the kite size
-    //                
-    //                System.out.println();
-    //            }
-    //        }
-    //        kiteSizes[weightIndex][speedIndex] = kiteSizes[][];
+    
 }
