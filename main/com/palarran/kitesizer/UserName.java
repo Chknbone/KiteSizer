@@ -1,3 +1,12 @@
+/* KiteSizeDB.java
+ * Written by: CB
+ * 
+ * Asking for username from user.
+ * Checking if username has been used before. If yes, returns "Welcome back"
+ * If not, returns "Welcome".
+ * ^^       ^^      ^^
+ * Not really needed but just trying thing out.
+ */
 package com.palarran.kitesizer;
 
 public class UserName {

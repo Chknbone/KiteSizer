@@ -1,15 +1,9 @@
-Searching for and returning arraylist values and index numbersSyntax error, insert ")" to complete ExpressionArraylist cannot be resolved to a typeArayList<String> names = new Arraylist<String>();        names.add("Captain");        names.add("Mal");        System.out.print(names.indexOf("Mal")); //returns the index(position in Array) of the value "Mal"        System.out.print(names.contains("Mal")); // returns true/false if the Array contain the value "Mal"class KiteTable {
-    public void main(String args[]) {
-        int t, i;
-        int table[][] = new int [12][12];
-        
-        for (t=0; t<12; ++t) {
-            for (i=0; i<12; ++i) {
-            table[t][i] = (t*12)+i+1;
-            System.out.print(table[t][i] + " ");
+userWeight cannot be resolved to a variableCannot use this in a static contextCannot use this in a static contextWeight kiteWeight = null;
+        for (Weight data : getWeight()) {
+            
+            if (userWeight == data.getWeight()) {
+                kiteWeight = data;
+            }
+            int weightIndex = getWeight().indexOf(kiteWeight);
+
         }
-        System.out.println();
-        }
-    }
-}
-public void getWind() {        method(new Scanner(System.in), System.out);      }      /** For testing. */public void getWind(Scanner scanner, PrintWriter output) {    output.println("Enter the wind speed in knots per hour: ");    int windInput = scanner.nextInt();    while (windInput < 10 || windInput > 40) {      output.println("Try again. Enter a wind speed between 10 and 40 knots.");      windInput = scanner.nextInt();    }	    windSpeed = windInput;        return windSpeed;  }            ^^      @Test      public void shouldProcessUserInput() {        StringWriter output = new StringWriter();        String input = "11\n"       // "Wrong number, try again."                     + "10\n";        assertEquals(10, systemUnderTest.processUserInput(            new Scanner(input), new PrintWriter(output)));        assertThat(output.toString(), contains("Wrong number, try again.")););      }             

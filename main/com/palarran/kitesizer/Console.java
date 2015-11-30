@@ -15,7 +15,7 @@ public class Console {
     public static void main(String[] args) {
 
         // initialize KiteSizeDB database
-        KiteSizeDB prodDB = new KiteSizeDB();
+        Databases prodDB = new Databases();
         prodDB.bootstrapWeightDB();
         prodDB.bootstrapSpeedDB();
         prodDB.bootstrapKiteSizeDB();
@@ -82,7 +82,7 @@ public class Console {
             
             
             // TODO combine weight and wind and show suggested kite size
-            String kiteInfo = prodDB.addKiteSize(userName, userWeightPounds, windSpeedKnots);
+            String kiteInfo = prodDB.addKiteSize(userName, userWeightPounds, windSpeedKnots, kiteSize);
             System.out.println("\nMaths done. Here are the details: ");
             System.out.println(kiteInfo + "\n");
         }

@@ -1,8 +1,8 @@
 /* KiteSizeDB.java
- * Dev: CB
+ * Written by: CB
  * 
  * Checking the Kite Size table for the correct kite size using user provided weight and wind speed.
- * Change: Was 'KiteSizer.java' refactored to 'KiteSizeDB'.
+ * 
  */
 
 package com.palarran.kitesizer;
@@ -13,28 +13,28 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class KiteSizeDB {
+public class Databases {
 
     //fields
+    private ArrayList<UserName> users;
     private ArrayList<Weight> weights;
     private ArrayList<WindSpeed> speeds;
-    private ArrayList<UserName> users;
 
-    private void Kite(Arrays sizes) {
+    private void theKite(Arrays sizes) {
 
     }
 
-    private static Logger kiteSizeDBLog = Logger.getLogger(KiteSizeDB.class.getName());
+    private static Logger kiteSizeDBLog = Logger.getLogger(Databases.class.getName());
     private static ConsoleHandler logScreen = new ConsoleHandler();
 
     //constructor
-    public KiteSizeDB() {
+    public Databases() {
+        users = new ArrayList<UserName>();
         weights = new ArrayList<Weight>();
         speeds = new ArrayList<WindSpeed>();
-        users = new ArrayList<UserName>();
     }
 
-    public KiteSizeDB(Kite sizes) {
+    public Databases(Kite sizes) {
         sizes = new Kite(sizes);
     }
 
@@ -51,6 +51,10 @@ public class KiteSizeDB {
         logScreen.setLevel(Level.FINE);
     }
 
+    public ArrayList<UserName> getUsers() {
+        return users;
+    }
+
     public ArrayList<Weight> getWeight() {
         return weights;
     }
@@ -59,12 +63,20 @@ public class KiteSizeDB {
         return speeds;
     }
 
-    public Arrays[][] getKite() {
+    public Arrays getKite() {
         return getKite();
     }
 
-    public ArrayList<UserName> getUsers() {
-        return users;
+    public void addWeight(int weightChoices) {
+        weights.add(new Weight(weightChoices));
+    }
+
+    public void addSpeed(int speedChoices) {
+        speeds.add(new WindSpeed(speedChoices));
+    }
+
+    public void addSize(Kite kiteSizes) {
+        Kite.add(new Kite(kiteSizes));
     }
 
     public boolean addUser(String userName) {
@@ -80,19 +92,7 @@ public class KiteSizeDB {
         return userExist;
     }
 
-    public void addWeight(int weightChoices) {
-        weights.add(new Weight(weightChoices));
-    }
-
-    public void addSpeed(int speedChoices) {
-        speeds.add(new WindSpeed(speedChoices));
-    }
-
-    public void addSize(Kite kiteSizes) {
-        Kite.add(new Kite(kiteSizes));
-    }
-
-    public String addKiteSize(String userName, int userWeight, int userSpeed) {
+    public String addKiteSize(String userName, int userWeight, int userSpeed, int kiteSize) {
         kiteSizeDBLog.fine("Starting the process");
         //finding user object
         kiteSizeDBLog.fine("Getting user name");
@@ -102,38 +102,45 @@ public class KiteSizeDB {
                 kiteBoarder = data;
             }
         }
+
         //finding user weight object
-        //TODO need to determine array index of userWeight
         kiteSizeDBLog.fine("Getting users weight");
         Weight kiteWeight = null;
         for (Weight data : getWeight()) {
             kiteSizeDBLog.fine("Comparing " + userWeight + " to " + data.getWeight());
             if (userWeight == data.getWeight()) {
                 kiteWeight = data;
+                kiteSizeDBLog.fine("kiteWeight value " + kiteWeight);
             }
-            int weightIndex = getWeight().indexOf(kiteWeight);
-           
+
         }
-       
+
         //finding wind Speed object
-        //TODO determine array index of userSpeed
         kiteSizeDBLog.fine("Getting wind speed");
         WindSpeed kiteSpeed = null;
         for (WindSpeed data : getWindSpeed()) {
             if (userSpeed == data.getWind()) {
                 kiteSpeed = data;
             }
+
         }
 
-        Arrays kiteSizes = null;
+        //TODO the below kiteSizes Arrays is not working. The loop works, but have not figure out how to use the indexes above to pull the right kite size out of the Array below.
+        theKite kiteSizes = null;
         int rowsForKnotValues = 12;
         int columnsForWeightValues = 12;
         int kv, wv;
 
+        int speedIndex = getWindSpeed().indexOf(kiteSpeed);
+        int weightIndex = getWeight().indexOf(kiteWeight);
+
         for (kv = 0; kv < rowsForKnotValues; kv++) {
             for (wv = 0; wv < columnsForWeightValues; wv++) {
-                kiteSizes[userWeight][kiteSpeed] = kiteSizes[][];
-                //TODO add some logic here to return the kite size
+                
+                Arrays[][] finalKiteSize = new Arrays [weightIndex][speedIndex];
+               
+                kiteSizeDBLog.fine("Arrays output " + finalKiteSize);
+                //TODO God Dammit. I lost the plot here. I'm using Arrays wrong somehow.
 
                 System.out.println();
             }
@@ -184,7 +191,6 @@ public class KiteSizeDB {
         addSpeed(10);
     }
 
-    //TODO Nothing south of here really works like it should.
     public void bootstrapKiteSizeDB() {
 
         int[][] kiteSizes = new int[12][12];
