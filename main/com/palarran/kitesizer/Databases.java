@@ -97,8 +97,9 @@ public class Databases {
         return userExist;
     }
 
-    public String addKiteSize(String userName, int userWeight, int userSpeed, Kite kiteSizes) {
+    public String addKiteSize(String userName, int userWeight, int userSpeed, ArrayList <Kite> sizes) {
         kiteSizeDBLog.fine("Starting the process");
+        
         //finding user object
         kiteSizeDBLog.fine("Getting user name");
         UserName kiteBoarder = null;
@@ -132,36 +133,37 @@ public class Databases {
 
         //TODO below is not working. The loop works on it's own, I can get the the indexes as well.
         //but I cannot seem to get past that. Not sure i'm correct on usage of the 2D array. 
-
+        
         int rowsForKnotValues = 12;
         int columnsForWeightValues = 12;
         int kv, wv;
 
         int speedIndex = getWindSpeed().indexOf(kiteSpeed);
         int weightIndex = getWeight().indexOf(kiteWeight);
-
+        
         Kite kiteSized = null;
         for (Kite data : getKite()) {
-            if (kiteSizes == data.getSizes()) {
+            if(sizes.equals(data.getSizes())) {
                 kiteSized = data;
             }
             for (kv = 0; kv < rowsForKnotValues; kv++) {
                 for (wv = 0; wv < columnsForWeightValues; wv++) {
-                    if (kiteSizes[kv][wv] == kiteSizes[speedIndex][weightIndex])
-                    int finalKiteSize = kiteSizes[speedIndex][weightIndex];
-                    kiteSizeDBLog.fine("Arrays output " + finalKiteSize);
-                    //TODO God Dammit. Lost the plot here. Using this array wrong somehow.
+                    if (kiteSized[kv][wv] == kiteSized[weightIndex][speedIndex])
+                         finalKiteSize = kiteSized[weightIndex][speedIndex];
+                        kiteSizeDBLog.fine("Arrays output " + finalKiteSize);
+                    //TODO God Dammit. I lost the plot here. I'm using Arrays wrong somehow.
+
+                    }
                 }
             }
-        }
-
+            
         //Determine kite size
         kiteSizeDBLog.fine("Getting kite size and adding it all togather");
         Kite tempKite = new Kite(null);
         tempKite.setUsers(kiteBoarder);
         tempKite.setWeights(kiteWeight);
         tempKite.setSpeeds(kiteSpeed);
-        tempKite.setSizes(kiteSizes);
+        tempKite.setSizes(kiteSized);
         //tempKite.setTodaysDate(todaysDate);
         Kite.add(tempKite);
         kiteSizeDBLog.fine("DONE!");
