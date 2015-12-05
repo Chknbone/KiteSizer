@@ -9,10 +9,10 @@ public class Kite {
     private UserName users;
     private WindSpeed speeds;
     private Weight weights;
-    private Kite sizes;
+    private Size sizes;
 
     //constructor
-    public Kite(Kite kiteSizes) {
+    public Kite(Size kiteSizes) {
         todaysDate = LocalDate.now();
     }
     //getters and setters
@@ -49,22 +49,18 @@ public class Kite {
         this.speeds = speeds;
     }
 
-    public Kite getSizes() {
+    public Size getSizes() {
         return sizes;
     }
 
-    public void setSizes(Kite kiteSizes) {
+    public void setSizes(Size kiteSizes) {
         this.sizes = kiteSizes;
-    }
-
-    public static void add(Kite tempKite) {
-
     }
 
     public String toString() {
         return "Hello " + this.getUsers() + " With your " + this.getWeights() + " and the "
-                + this.getSpeeds() + " knots. The recommended kite size to use is "
-                + this.getSizes() + ". This data is only valid for today's date: "
+                + this.getSpeeds() + " knots. Recommended kite size is "
+                + this.getSizes() + ". \nData only valid for today's date: "
                 + this.getTodaysDate();
     }
 

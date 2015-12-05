@@ -27,7 +27,7 @@ public class Console {
         String userName = null;
         int userWeightPounds = 0;
         int windSpeedKnots = 0;
-        int kiteSize = 0;
+        int[] sizes = null;
         
         while (programRunning) {
             //ask for users name and add it to DB
@@ -80,9 +80,13 @@ public class Console {
                 e.printStackTrace();
             }
             
+            //choosing kite size
+            for (int[] data : prodDB.getKite()) {
+                sizes = data;
+            }
             
             // TODO combine weight and wind and show suggested kite size
-            String kiteInfo = prodDB.addKiteSize(userName, userWeightPounds, windSpeedKnots, kiteSize);
+            String kiteInfo = prodDB.addKiteSize(userName, userWeightPounds, windSpeedKnots, sizes);
             System.out.println("\nMaths done. Here are the details: ");
             System.out.println(kiteInfo + "\n");
         }
