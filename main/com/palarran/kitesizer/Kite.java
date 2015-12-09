@@ -1,3 +1,9 @@
+/* Kite.java
+ * Written by: CB
+ * 
+ * Combines Username, windSpeed, weight and KiteSize.
+*/
+
 package com.palarran.kitesizer;
 
 import java.time.LocalDate;

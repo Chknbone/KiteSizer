@@ -1,9 +1,10 @@
 /* KiteSizeDB.java
- * Dev: CB
+ * Written by: CB
  * 
  * Program is being write initially for output to the console. Main method will live here. 
  * After getting console working, may tackle it in Spring or something similar.
  */
+
 package com.palarran.kitesizer;
 
 import java.io.BufferedReader;

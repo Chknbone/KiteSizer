@@ -16,14 +16,14 @@ public class KiteSizeTest {
     
     @Test //testing the 'KiteSizeDB' class & 'getTheKiteSize' method
     public void testKiteSize() { 
-        KiteSizeDB testKiteSize1 = new KiteSizeDB();
+        Databases testKiteSize1 = new Databases();
         int result = testKiteSize1.bootstrapKiteSizeDB();
         assertEquals(0, result);
     }
     
     @Test //testing the 'setTheKiteSize' method
     public void testSetKiteSize() { 
-        KiteSizeDB testKiteSize2 = new KiteSizeDB();
+        Databases testKiteSize2 = new Databases();
         testKiteSize2.setTheKiteSize(12);
         assertEquals(12, testKiteSize2.bootstrapKiteSizeDB());
     }

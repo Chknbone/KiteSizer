@@ -1,8 +1,8 @@
 /* Weight.java
- * Dev: CB
+ * Written by: CB
  * 
  * Holds user weight values.
- * Changes: Was 'AskForWeight.java' refactored to 'Weight.java'
+ * 
  */
 
 package com.palarran.kitesizer;

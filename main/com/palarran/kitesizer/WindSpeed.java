@@ -1,8 +1,8 @@
 /* WindSpeed.java
- * Dev: CB
+ * Written by: CB
  * 
  * Requesting user input of wind speed.
- * Changes: Was 'AskForWindSpeed' refactored to 'WindSpeed'
+ * 
  */
 
 package com.palarran.kitesizer;

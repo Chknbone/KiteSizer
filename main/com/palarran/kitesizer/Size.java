@@ -1,8 +1,9 @@
 /* Size.java
- * Dev: CB
+ * Written by: CB
  * 
  * Holds kite size values.
 */
+
 package com.palarran.kitesizer;
 
 //fields
@@ -13,7 +14,7 @@ public class Size {
    //constructor
    public Size() {
        kiteSize = 0;//this would be called like: kiteSize exampleSize = new kiteSize(); 
-       //exampleSize.setkiteSize(10)
+                    //exampleSize.setkiteSize(10)
    }
    public Size(int kiteSize) {
        setKiteSize(kiteSize); //this would be called like: kiteSize exampleSize = new kiteSize(10);

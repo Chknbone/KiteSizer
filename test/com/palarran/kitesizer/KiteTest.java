@@ -11,7 +11,7 @@ public class KiteTest {
         Kite testKite1 = new Kite();
         WindSpeed speedResult1 = testKite1.getSpeeds();
         Weight weightResult1 = testKite1.getWeights();
-        KiteSizeDB sizeResult1 = testKite1.getSizes();
+        Databases sizeResult1 = testKite1.getSizes();
         assertEquals(null, speedResult1);
         assertEquals(null, weightResult1);
         assertEquals(null, sizeResult1);
