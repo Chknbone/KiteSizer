@@ -19,7 +19,7 @@ public class Weight {
     }
 
     public Weight(int userWeight) { //constructors are allowed to have duplicate names.
-        setWeight(userWeight); //this would be called like: userWeight exampleWeight = new userWeight(100);
+        setWeight(userWeight); //this would be called like: userWeightConstructor exampleWeight = new userWeight(100);
     }
 
     //getters and setters
@@ -27,8 +27,8 @@ public class Weight {
         return userWeight;
     }
 
-    public void setWeight(int newWeight) { //allows any class to change the "userWeight" variable
-        userWeight = newWeight;
+    public void setWeight(int newWeightSetter) { //allows any class to change the "userWeight" variable
+        userWeight = newWeightSetter;
     }
 
     public String toString() { //this overrides java's default 'toString' to a human readable string.

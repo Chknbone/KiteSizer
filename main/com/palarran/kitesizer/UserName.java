@@ -28,8 +28,8 @@ public class UserName {
         return name;
     }
 
-    public void setName(String newName) {
-        this.name = newName;
+    public void setName(String newNameSetter) {
+        this.name = newNameSetter;
     }
     
     public String toString() {

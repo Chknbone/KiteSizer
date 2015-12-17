@@ -18,14 +18,7 @@ public class Databases {
     private ArrayList<UserName> users;
     private ArrayList<Weight> weights;
     private ArrayList<WindSpeed> speeds;
-
-    int[][] kiteSizes = new int[12][12];
-
-    //private ArrayList<Kite> sizes;
-
-    //private void Arrays(Kite sizes) {
-
-    //}
+    //TODO add kite size field
 
     private static Logger kiteSizeDBLog = Logger.getLogger(Databases.class.getName());
     private static ConsoleHandler logScreen = new ConsoleHandler();
@@ -35,15 +28,15 @@ public class Databases {
         users = new ArrayList<UserName>();
         weights = new ArrayList<Weight>();
         speeds = new ArrayList<WindSpeed>();
-        kiteSizes = new int[12][12];
+        //TODO add size constructor
     }
 
     //getters and setters
     public void setLogging() {
         kiteSizeDBLog.addHandler(logScreen);
-        kiteSizeDBLog.setLevel(Level.FINER);
+        kiteSizeDBLog.setLevel(Level.FINE);
         kiteSizeDBLog.setUseParentHandlers(false);
-        logScreen.setLevel(Level.FINER);
+        logScreen.setLevel(Level.FINE);
     }
 
     public ArrayList<UserName> getUsers() {
@@ -57,21 +50,15 @@ public class Databases {
     public ArrayList<WindSpeed> getWindSpeed() {
         return speeds;
     }
-
-    public int[][] getKite() {
-        return kiteSizes;
-    }
     
+    //TODO add size getters and setters
+
     public void addWeight(int weightChoices) {
         weights.add(new Weight(weightChoices));
     }
 
     public void addSpeed(int speedChoices) {
         speeds.add(new WindSpeed(speedChoices));
-    }
-
-    public void addSize(int[][] kiteSizes) {
-        int[][].add(new Size(kiteSizes));
     }
 
     public boolean addUser(String userName) {
@@ -87,7 +74,7 @@ public class Databases {
         return userExist;
     }
 
-    public String addKiteSize(String userName, int userWeight, int userSpeed, int[] sizes) {
+    public String addKiteSize(String userName, int userWeight, int userSpeed) {
 
         kiteSizeDBLog.fine("Starting the process");
 
@@ -102,23 +89,23 @@ public class Databases {
 
         //finding user weight object
         kiteSizeDBLog.fine("Getting users weight");
-        Weight kiteWeight = null;
+        Weight actualUserWeight = null;
         for (Weight data : getWeight()) {
             //kiteSizeDBLog.fine("Comparing " + userWeight + " to " + data.getWeight());
             if (userWeight == data.getWeight()) {
-                kiteWeight = data;
-                kiteSizeDBLog.fine("kiteWeight value " + kiteWeight);
+                actualUserWeight = data;
+                kiteSizeDBLog.fine("kiteWeight value " + actualUserWeight);
             }
 
         }
 
         //finding wind Speed object
         kiteSizeDBLog.fine("Getting wind speed");
-        WindSpeed kiteSpeed = null;
+        WindSpeed actualWindSpeed = null;
         for (WindSpeed data : getWindSpeed()) {
             if (userSpeed == data.getWind()) {
-                kiteSpeed = data;
-                kiteSizeDBLog.fine("kiteSpeed value " + kiteSpeed);
+                actualWindSpeed = data;
+                kiteSizeDBLog.fine("kiteSpeed value " + actualWindSpeed);
             }
 
         }
@@ -128,48 +115,53 @@ public class Databases {
         * but I cannot seem to get past that. Not sure i'm correct on usage of the 2D array. Actually,
         * this loop does not even appear to be running. Log does not show up.
         */
-        
+
         int rowsForKnotValues = 12;
         int columnsForWeightValues = 12;
         int kv, wv;
-
-        int speedIndex = getWindSpeed().indexOf(kiteSpeed);
-        int weightIndex = getWeight().indexOf(kiteWeight);
-        kiteSizeDBLog.fine("kiteWeight Index value " + kiteWeight);
-
+        
+        int speedIndex = getWindSpeed().indexOf(actualWindSpeed);
+        int weightIndex = getWeight().indexOf(actualUserWeight);
+        
+        
+        
+        kiteSizeDBLog.fine("kiteWeight Index value " + actualUserWeight);
         kiteSizeDBLog.fine("Getting kite size");
-        Size kiteSized = null;
-        for (Size data : getKite()) {
+              
+        
+        for (Size data : getKiteSize()) {
             kiteSizeDBLog.fine("Kite data value " + data);
-            if (sizes.equals(data.getSizes)) {
-                kiteSized = data;
-                kiteSizeDBLog.fine("kiteSized value " + kiteSized);
+            if (kiteSize.equals(kiteSized)) {
+               kiteSized = data;
+                kiteSizeDBLog.fine("kiteSized value " + kiteSize);
             }
             for (kv = 0; kv < rowsForKnotValues; kv++) {
                 for (wv = 0; wv < columnsForWeightValues; wv++) {
-                    if (kiteSized[kv][wv] == kiteSized[weightIndex][speedIndex])
-                        finalKiteSize = kiteSized[weightIndex][speedIndex];
-                    kiteSizeDBLog.fine("Arrays output " + kiteSized);
-                    //TODO God Damn it. I lost the plot here. I'm using Arrays wrong somehow.
-
+                    
+                    if ((kiteSized.get(wv) & kiteSized.get(kv)) == (kiteSized.get(weightIndex) & (kiteSized.get(speedIndex))))
+                        
+                    kiteSizeDBLog.fine("Arrays output " + kiteSize);
+                            
                 }
             }
+            finalKiteSize = kiteSized;
         }
 
         //Determine kite size
         kiteSizeDBLog.fine("Getting kite size and adding it all togather");
         Kite tempKite = new Kite(null);
         tempKite.setUsers(kiteBoarder);
-        tempKite.setWeights(kiteWeight);
-        tempKite.setSpeeds(kiteSpeed);
-        tempKite.setSizes(kiteSized);
+        tempKite.setWeights(actualUserWeight);
+        tempKite.setSpeeds(actualWindSpeed);
+        //TODO add kitesize stuff
         Kite.add(tempKite);
         kiteSizeDBLog.fine("DONE!");
         return tempKite.toString();
     }
 
     public void bootstrapWeightDB() {
-
+        
+               
         addWeight(95);
         addWeight(110);
         addWeight(125);
@@ -201,9 +193,9 @@ public class Databases {
     }
 
     public void bootstrapKiteSizeDB() {
-
-        // int[][] kiteSizes = new int[12][12];
-
+        
+        int[][] kiteSizes = new int[12][12];
+        
         kiteSizes[0][0] = 3;
         kiteSizes[0][1] = 3;
         kiteSizes[0][2] = 4;

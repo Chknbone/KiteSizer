@@ -15,59 +15,60 @@ public class Kite {
     private UserName users;
     private WindSpeed speeds;
     private Weight weights;
-    private Size sizes;
+    //TODO add kitesize variable
+    
 
     //constructor
     public Kite(Size kiteSizes) {
         todaysDate = LocalDate.now();
     }
+    
     //getters and setters
 
     public LocalDate getTodaysDate() {
         return todaysDate;
     }
 
-    public void setTodaysDate(LocalDate todaysDate) {
-        this.todaysDate = todaysDate;
+    public void setTodaysDate(LocalDate todaysDateSetter) {
+        this.todaysDate = todaysDateSetter;
     }
 
     public UserName getUsers() {
         return users;
     }
 
-    public void setUsers(UserName users) {
-        this.users = users;
+    public void setUsers(UserName newUserNameSetter) {
+        this.users = newUserNameSetter;
     }
 
     public Weight getWeights() {
         return weights;
     }
 
-    public void setWeights(Weight weights) {
-        this.weights = weights;
+    public void setWeights(Weight newWeightsSetter) {
+        this.weights = newWeightsSetter;
     }
 
     public WindSpeed getSpeeds() {
         return speeds;
     }
 
-    public void setSpeeds(WindSpeed speeds) {
-        this.speeds = speeds;
+    public void setSpeeds(WindSpeed newWindSpeedsSetter) {
+        this.speeds = newWindSpeedsSetter;
     }
 
-    public Size getSizes() {
-        return sizes;
-    }
+    //TODO Add kitesize getter and setter
 
-    public void setSizes(Size kiteSizes) {
-        this.sizes = kiteSizes;
+    public static void add(Kite tempKite) {
+                
     }
 
     public String toString() {
         return "Hello " + this.getUsers() + " With your " + this.getWeights() + " and the "
                 + this.getSpeeds() + " knots. Recommended kite size is "
-                + this.getSizes() + ". \nData only valid for today's date: "
+                + ". \nData only valid for today's date: "
                 + this.getTodaysDate();
     }
 
+    
 }

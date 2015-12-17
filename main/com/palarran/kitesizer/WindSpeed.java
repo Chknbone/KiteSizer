@@ -27,8 +27,8 @@ public class WindSpeed {
         return windSpeed;
     }
 
-    public void setWind(int newWind) { //allows any class to change the "windSpeed" variable
-        windSpeed = newWind;
+    public void setWind(int newWindSpeedSetter) { //allows any class to change the "windSpeed" variable
+        windSpeed = newWindSpeedSetter;
     }
 
     public String toString() { //this overrides java's default 'toString' to a human readable string, but i cannot remember why I did it
