@@ -20,18 +20,18 @@ public class Console {
         prodDB.bootstrapWeightDB();
         prodDB.bootstrapSpeedDB();
         prodDB.bootstrapKiteSizeDB();
-        prodDB.setLogging();
 
         // initialize Console
+        
         boolean programRunning = true;
         BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in));
         String userName = null;
         int userWeightPounds = 0;
         int windSpeedKnots = 0;
-        //TODO add variable for kite size
-        
-        
+        Size kiteSize = null;
+
         while (programRunning) {
+
             //ask for users name and add it to DB
             System.out.println("Enter your name: ");
 
@@ -50,15 +50,16 @@ public class Console {
             }
 
             // ask for user weight and add to DB
-            System.out.print("This App will determine what size kite you should us based on your weight and the wind speed you provide.");
+            System.out.print(
+                    "This App will determine what size kite you should us based on your weight and the wind speed you provide.");
             System.out.println("\nFrom the following list: ");
-            
+
             for (Weight data : prodDB.getWeight()) {
                 System.out.println(data);
             }
 
             System.out.println("Enter the weight closet to your weight. Prices Right rules apply");
-            
+
             try {
                 userWeightPounds = Integer.parseInt(consoleInput.readLine());
             } catch (NumberFormatException e) {
@@ -69,7 +70,7 @@ public class Console {
 
             //show list of available wind speeds and ask  for input
             System.out.println("\nFrom the following list of wind Speeds: ");
-            
+
             for (WindSpeed data : prodDB.getWindSpeed()) {
                 System.out.println(data);
             }
@@ -83,12 +84,14 @@ public class Console {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
+
             //choosing kite size
-            //TODO add in kite size stuff
-            
+            for (Size data : prodDB.getKites()) {
+                kiteSize = data;
+            }
+
             // combine weight and wind and show suggested kite size
-            String kiteInfo = prodDB.addKiteSize(userName, userWeightPounds, windSpeedKnots);
+            String kiteInfo = prodDB.addKiteSize(userName, userWeightPounds, windSpeedKnots, kiteSize);
             System.out.println("\nMaths done. Here are the details: ");
             System.out.println(kiteInfo + "\n");
         }
