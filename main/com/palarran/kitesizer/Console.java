@@ -5,7 +5,7 @@
  * After getting console working, may tackle it in Spring or something similar.
  */
 
-package com.palarran.kitesizer;
+package kitesizer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,83 +15,62 @@ public class Console {
 
     public static void main(String[] args) {
 
-        // initialize KiteSizeDB databases
         Databases prodDB = new Databases();
-        prodDB.bootstrapWeightDB();
-        prodDB.bootstrapSpeedDB();
-        prodDB.bootstrapKiteSizeDB();
+      
+        prodDB.setLogging();
 
         // initialize Console
-        
         boolean programRunning = true;
         BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in));
         String userName = null;
         int userWeightPounds = 0;
         int windSpeedKnots = 0;
-        Size kiteSize = null;
-
+        //TODO add variable for kite size
+        
+        
         while (programRunning) {
-
             //ask for users name and add it to DB
             System.out.println("Enter your name: ");
 
             try {
                 userName = consoleInput.readLine();
             } catch (IOException e) {
-                System.out.println("Names only, no numbers. Try again.");
+                System.out.println("Names only, no numbers. Try again."); //THIS DOES NOTHING
             }
 
             boolean nameResult = prodDB.addUser(userName);
 
             if (nameResult) {
-                System.out.println("Welcome back " + userName); //user name exist in DB
+                System.out.println("Welcome back " + userName); //user name exists in DB
             } else {
                 System.out.println("Welcome " + userName); // user name does not exist in DB
             }
 
             // ask for user weight and add to DB
-            System.out.print(
-                    "This App will determine what size kite you should us based on your weight and the wind speed you provide.");
-            System.out.println("\nFrom the following list: ");
+            System.out.println("This App will determine what size kite you should use based on your weight and the wind speed you provide.");
+            System.out.print("\nFrom the following list (in lbs): ");
+            
+            //for (Integer data : prodDB.getWeight()) {  //If you are sending the whole ArrayList here anyway, then what's the point in making it private?
+            //    System.out.println(data);
+            //}
+            System.out.println(prodDB.listWeights());
 
-            for (Weight data : prodDB.getWeight()) {
-                System.out.println(data);
-            }
-
-            System.out.println("Enter the weight closet to your weight. Prices Right rules apply");
-
-            try {
-                userWeightPounds = Integer.parseInt(consoleInput.readLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Weights provided must be integers");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            String prompt = "Enter the weight closest to your weight. (\"Price is Right\" rules apply.)";
+            userWeightPounds = MyUtil.getInt(prompt);
+          
             //show list of available wind speeds and ask  for input
-            System.out.println("\nFrom the following list of wind Speeds: ");
+            System.out.print("\nFrom the following list of wind Speeds (in knots): ");
+            System.out.println(prodDB.listSpeeds());
 
-            for (WindSpeed data : prodDB.getWindSpeed()) {
-                System.out.println(data);
-            }
-
-            System.out.println(
-                    "Enter the wind speed closet to the wind speed you are gonna kite in. Prices Right rules apply here as well");
-            try {
-                windSpeedKnots = Integer.parseInt(consoleInput.readLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Wind speeds provided must be integers");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            prompt = "Enter the wind speed closest to the wind speed you are gonna kite in. (\"Price is Right\" rules apply here too.)";
+            windSpeedKnots = MyUtil.getInt(prompt);
+          
+            
             //choosing kite size
-            for (Size data : prodDB.getKites()) {
-                kiteSize = data;
-            }
-
+            //TODO add in kite size stuff
+            
             // combine weight and wind and show suggested kite size
-            String kiteInfo = prodDB.addKiteSize(userName, userWeightPounds, windSpeedKnots, kiteSize);
+            String kiteInfo = prodDB.addKiteSize(userName, userWeightPounds, windSpeedKnots);
             System.out.println("\nMaths done. Here are the details: ");
             System.out.println(kiteInfo + "\n");
         }

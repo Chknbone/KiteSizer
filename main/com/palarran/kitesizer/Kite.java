@@ -2,78 +2,48 @@
  * Written by: CB
  * 
  * Combines Username, windSpeed, weight and KiteSize.
-*/
+ */
 
-package com.palarran.kitesizer;
+package kitesizer;
 
 import java.time.LocalDate;
 
-public class Kite {
+class Kite {
 
-    //fields
-    private LocalDate todaysDate;
-    private UserName users;
-    private WindSpeed speeds;
-    private Weight weights;
-    private int sizes;
-    
+	//fields
+	private LocalDate todaysDate;
+	private String user;
+	private int speed;
+	private int weight;
+	private int kiteSize;
 
-    //constructor
-    public Kite(Size kiteSizes) {
-        todaysDate = LocalDate.now();
-    }
-    
-    //getters and setters
 
-    public LocalDate getTodaysDate() {
-        return todaysDate;
-    }
+	//constructor
+	Kite() {
+		todaysDate = LocalDate.now();
+	}
 
-    public void setTodaysDate(LocalDate todaysDateSetter) {
-        this.todaysDate = todaysDateSetter;
-    }
+	LocalDate getTodaysDate() {
+		return todaysDate;
+	}
 
-    public UserName getUsers() {
-        return users;
-    }
+	void setTodaysDate(LocalDate todaysDateSetter) {
+		this.todaysDate = todaysDateSetter;
+	}
 
-    public void setUsers(UserName newUserNameSetter) {
-        this.users = newUserNameSetter;
-    }
+	void setUser(String s) { this.user = s; }
 
-    public Weight getWeights() {
-        return weights;
-    }
+	void setWeight(int n) { this.weight = n; }
 
-    public void setWeights(Weight newWeightsSetter) {
-        this.weights = newWeightsSetter;
-    }
+	void setSpeed(int n) { this.speed = n; }
 
-    public WindSpeed getSpeeds() {
-        return speeds;
-    }
+	void setKiteSize(int n) { this.kiteSize = n; }
 
-    public void setSpeeds(WindSpeed newWindSpeedsSetter) {
-        this.speeds = newWindSpeedsSetter;
-    }
+	public String toString() {
+		return "Hello " + this.user + " With your weight of " + this.weight + " lbs, and the wind at "
+				+ this.speed + " knots, \nrecommended kite size is " + this.kiteSize
+				+ ". \nData only valid for today's date: " + this.todaysDate;
+	}
 
-    public int getSizes() {
-        return sizes;
-    }
 
-    public void setSizes(int finalKiteSize) {
-        this.sizes = finalKiteSize;
-    }
-    
-    public static void add(Kite tempKite) {
-                
-    }
-    
-    public String toString() {
-        return "Hello " + this.getUsers() + " With your " + this.getWeights() + " and the "
-                + this.getSpeeds() + " knots. Recommended kite size is "
-                + this.getSizes() + ". \nData only valid for today's date: "
-                + this.getTodaysDate();
-    }
-    
 }

@@ -1,9 +1,0 @@
-userWeight cannot be resolved to a variableCannot use this in a static contextCannot use this in a static contextWeight kiteWeight = null;
-        for (Weight data : getWeight()) {
-            
-            if (userWeight == data.getWeight()) {
-                kiteWeight = data;
-            }
-            int weightIndex = getWeight().indexOf(kiteWeight);
-
-        }

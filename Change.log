@@ -1,0 +1,9 @@
+Fixes:
+
+* Remove Public from everything except public static void main
+* removed all unnecessary classes except for Kite (which is also unnecessary)
+* left arraylists, but arrays would be better
+* added input checking for numeric input
+
+Problems: 
+* what if you do not enter a number from the list? Then the program crashes.
